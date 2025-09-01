@@ -11,7 +11,7 @@ python version-5.py \
   --template just-template.png \
   --image https://img.freepik.com/free-vector/collaborative-robotics-abstract-concept-illustration_335657-2115.jpg \
   --logo cnn-logo.png \
-  --title "Test Title: Banai's news photocard automation" \
+  --title "দনবাস ছাড়, ন্যাটোতে যাওয়া যাবে না, পশ্চিমা সেনাও চলবে না: ইউক্রেনকে পুতিনের শর্ত" \
   --date "22.08.2025" --source "Source: CNN" \
   --center "facebook.com/banaimedia" --right "banaimedia.com" \
   --font-regular "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf" \
