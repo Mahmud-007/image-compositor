@@ -15,11 +15,12 @@ try:
     import pillow_avif  # noqa: F401  # optional
 except Exception:
     pass
+    
 
 # ---------------- CONFIG ----------------
-template_dir = Path("./templates")   # your template folder
-csv_path     = Path("./prothomalo_31-08-2025.csv")  # your csv file
-out_dir      = Path("./output")      # output folder
+template_dir = Path("./templates/prothomalo_03-09-2025_10-58-template")   # your template folder
+csv_path     = Path("./csv/prothomalo_03-09-2025_10-58.csv")  # your csv file
+out_dir      = Path("./outputs/prothomalo_03-09-2025_10-58")      # output folder
 naming_mode  = "index"               # "index" or "title"
 # ----------------------------------------
 
@@ -80,7 +81,9 @@ def safe_slug(text: str, max_len: int = 60) -> str:
     return s[:max_len] or "untitled"
 
 def list_templates_sorted(template_dir: Path):
+    print("template_dir",template_dir)
     files = [p for p in template_dir.iterdir() if p.suffix.lower() in IMAGE_EXTS]
+    print(files)
     if not files:
         raise FileNotFoundError(f"No template images in {template_dir}")
     files.sort(key=lambda p: int(re.search(r"\d+", p.stem).group(0)) if re.search(r"\d+", p.stem) else 9999)
@@ -105,7 +108,9 @@ def process_one(template_path: Path, article_image: str, out_path: Path):
     cv2.imwrite(str(out_path), final_bgr)
 
 def main():
+    print(template_dir)
     templates = list_templates_sorted(template_dir)
+    print(templates)
     rows = read_csv_rows(csv_path)
     if len(templates) != len(rows):
         raise ValueError(f"Template count ({len(templates)}) != CSV rows ({len(rows)})")
